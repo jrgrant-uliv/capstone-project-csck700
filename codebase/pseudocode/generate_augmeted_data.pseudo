@@ -1,0 +1,24 @@
+function generate_augmented_data(normal_data, augmentation_sample_size):
+    set random_state to 42
+    seed random with random_state
+
+    unique_sequence_ids = []
+    augment_data = []
+
+    for each sequence x in normal_data:
+        preprocess x
+        if x is eligible for augmentation:
+            add x to augment_data
+            if size of augment_data >= augmentation_sample_size:
+                break
+        collect unique sequence ids from x
+
+
+    reversed_sequences = sample and reverse sequences(augment_data)
+    shuffled_sequences = sample and shuffle sequences(augment_data)
+    inserted_sequences = sample and insert sequences(augment_data, unique_sequence_ids)
+    augmented_data = concatenate reversed_sequences, shuffled_sequences, inserted_sequences
+
+    synthetic_abnormal = convert to string representation(augmented_data)
+
+    return synthetic_abnormal
