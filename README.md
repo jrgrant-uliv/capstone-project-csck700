@@ -4,7 +4,7 @@
 
 ### 1. Local Container
 
-Instructions running the experiment locally in a Docker container. 
+Instructions running the experiment locally in a Docker container.
 
 #### Cloning the Repository
 
@@ -14,12 +14,10 @@ To clone this repository locally, follow these steps:
 2. Navigate to the directory where you want to clone the repository.
 3. Run the following command:
 
-    ```bash
-    git clone https://github.com/jrgrant-uliv/capstone-project-csck700.git
-    cd capstone-project-csck700.git
-    ```
-
-4. Once the cloning process is complete, you will have a local copy of the repository on your machine.
+   ```bash
+   git clone https://github.com/jrgrant-uliv/capstone-project-csck700.git
+   cd capstone-project-csck700.git
+   ```
 
 #### Pull the container image
 
@@ -28,9 +26,9 @@ To pull a public container image from ghcr.io, follow these steps:
 1. Open a terminal or command prompt.
 2. Run the following command:
 
-    ```bash
-    docker pull ghcr.io/jrgrant-uliv/tensorflow-cuda-conda
-    ```
+   ```bash
+   docker pull ghcr.io/jrgrant-uliv/tensorflow-cuda-conda
+   ```
 
 3. Wait for the container image to be downloaded.
 
@@ -41,11 +39,13 @@ To start the docker container with the working directory mounted, use the follow
     ```bash
      docker run --rm --runtime=nvidia --gpus all -p 8888:8888 -v $(pwd):/ ghcr.io/jrgrant-uliv/tensorflow-cuda-conda
     ```
+
 Ctrl+Click on the notebook link in your terminal:
 
 ![Alt text](resources/control_click_terminal.png)
 
 ### 2. Paperspace Gradient
+
 Instructions for running the experiment in Paperspace Gradient
 
 These instructions assume you have a Paperspace Gradient account, to register one go here: https://console.paperspace.com/login
@@ -78,25 +78,38 @@ Create a Notebook:
 
 7. Click on the "View advanced options" button.
 8. Set the Workspace settings:
-    - Wporkspace: https://github.com/jrgrant-uliv/capstone-project-csck700.git
-    - Ref: main
-    - Username: blank
-    - Password: blank
+   - Wporkspace: https://github.com/jrgrant-uliv/capstone-project-csck700.git
+   - Ref: main
+   - Username: blank
+   - Password: blank
 
 ![Alt text](resources/workspace-settings.png)
 
 9. Set the Container settings:
-    - Name: ghcr.io/jrgrant-uliv/tensorflow-cuda-conda:v1
-    - Registry Username: blank
-    - Registry Password: blank
+   - Name: ghcr.io/jrgrant-uliv/tensorflow-cuda-conda:v1
+   - Registry Username: blank
+   - Registry Password: blank
 
 ![Alt text](resources/container-settings.png)
 
 10. Click on the "Start Notebook" button.
 
-
 ### 3. Google Colab
-Instructions
+
+Instructions to run experiment on Google Colab
+
+#### Clone the Github Repository
+
+To clone this repository locally, follow these steps:
+
+1. Open a terminal or command prompt.
+2. Navigate to the directory where you want to clone the repository.
+3. Run the following command:
+
+   ```bash
+   git clone https://github.com/jrgrant-uliv/capstone-project-csck700.git
+   cd capstone-project-csck700.git
+   ```
 
 #### Open the notebook on Colab
 
@@ -104,10 +117,10 @@ To open the notebook on Google Colab, follow these steps:
 
 1. Go to the [Google Colab website](https://colab.research.google.com/).
 2. Click on "File" in the menu bar.
-3. Select "Open notebook" from the dropdown menu.
-4. Upload the notebook using your preferred method.
-5. The notebook will open in Google Colab.
-
+3. Select "Upload notebook" from the dropdown menu.
+4. Click on the "Browse" button
+5. Navigate to the source code directory
+6. Select the "csck_700_experiment.ipynb" file
 
 #### Run the "Colab Setup" cell in the notebook
 
@@ -118,6 +131,3 @@ To run the "Colab Setup" cell in the notebook, follow these steps:
 3. Scroll to the "Colab Setup" cell.
 4. Click on the play button next to the cell.
 5. The cell will run and set up the necessary dependencies and configurations for the notebook.
-
-
-
