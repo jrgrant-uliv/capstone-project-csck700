@@ -1,5 +1,7 @@
 # IT Artefact for CSCK700 - James Grant
 
+This project is structured to run in a Docker container (ghcr.io/jrgrant-uliv/tensorflow-cuda-conda) for maximum portability. This container is pre-configured with Tensorflow, NVidia Cuda, and Miniconda and can be used on local cuda-capable hardware or cloud-based services like [Paperspace Gradient](https://www.paperspace.com/). If [Google Colab](https://colab.research.google.com/) is preferred, some Colab-specific code has been included to make it a seamless experience. 
+
 ## Setup
 
 ### 1. Local Container
