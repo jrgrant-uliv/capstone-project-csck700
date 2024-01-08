@@ -115,9 +115,10 @@ To open the notebook on Google Colab, follow these steps:
 To run the "Colab Setup" cell in the notebook, follow these steps:
 
 1. Open the notebook in Google Colab.
-2. Scroll to the "Colab Setup" cell.
-3. Click on the play button next to the cell.
-4. The cell will run and set up the necessary dependencies and configurations for the notebook.
+2. Select a GPU-equipped runtime (T4 GPU is sufficient)
+3. Scroll to the "Colab Setup" cell.
+4. Click on the play button next to the cell.
+5. The cell will run and set up the necessary dependencies and configurations for the notebook.
 
 
 
