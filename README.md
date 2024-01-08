@@ -4,7 +4,7 @@
 
 ### 1. Local Container
 
-Instructions for setting up the project on Paperspace Gradient.
+Instructions running the experiment locally in a Docker container. 
 
 #### Cloning the Repository
 
@@ -46,8 +46,9 @@ Ctrl+Click on the notebook link in your terminal:
 ![Alt text](resources/control_click_terminal.png)
 
 ### 2. Paperspace Gradient
-This section assumes you have a Paperspace Gradient account, to register one go here: https://console.paperspace.com/login
+Instructions for running the experiment in Paperspace Gradient
 
+These instructions assume you have a Paperspace Gradient account, to register one go here: https://console.paperspace.com/login
 
 Create a Paperspace Gradient project:
 
@@ -95,7 +96,7 @@ Create a Notebook:
 
 
 ### 3. Google Colab
-
+Instructions
 
 #### Open the notebook on Colab
 
@@ -104,10 +105,8 @@ To open the notebook on Google Colab, follow these steps:
 1. Go to the [Google Colab website](https://colab.research.google.com/).
 2. Click on "File" in the menu bar.
 3. Select "Open notebook" from the dropdown menu.
-4. In the "GitHub" tab, enter the URL of the notebook file.
-5. Click on the "Search" button.
-6. Select the notebook file from the search results.
-7. The notebook will open in Google Colab.
+4. Upload the notebook using your preferred method.
+5. The notebook will open in Google Colab.
 
 
 #### Run the "Colab Setup" cell in the notebook
