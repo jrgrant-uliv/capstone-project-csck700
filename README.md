@@ -16,7 +16,7 @@ To clone this repository locally, follow these steps:
 
     ```bash
     git clone https://github.com/jrgrant-uliv/capstone-project-csck700.git
-    cd 
+    cd capstone-project-csck700.git
     ```
 
 4. Once the cloning process is complete, you will have a local copy of the repository on your machine.
@@ -29,10 +29,8 @@ To pull a public container image from ghcr.io, follow these steps:
 2. Run the following command:
 
     ```bash
-    docker pull ghcr.io/username/repo:tag
+    docker pull ghcr.io/jrgrant-uliv/tensorflow-cuda-conda
     ```
-
-    Replace `username` with the GitHub username or organization name, `repo` with the name of the repository, and `tag` with the desired version or tag of the container image.
 
 3. Wait for the container image to be downloaded.
 
@@ -41,12 +39,85 @@ To pull a public container image from ghcr.io, follow these steps:
 To start the docker container with the working directory mounted, use the following command:
 
     ```bash
-     docker run --rm --runtime=nvidia --gpus all -p 8888:8888 -v $(pwd)/it_artefact/:/App/ ghcr.io/jrgrant-uliv/tensorflow-cuda-conda:v1 
+     docker run --rm --runtime=nvidia --gpus all -p 8888:8888 -v $(pwd):/ ghcr.io/jrgrant-uliv/tensorflow-cuda-conda
     ```
+Ctrl+Click on the notebook link in your terminal:
+
+![Alt text](resources/control_click_terminal.png)
 
 ### 2. Paperspace Gradient
+This section assumes you have a Paperspace Gradient account, to register one go here: https://console.paperspace.com/login
+
+
+Create a Paperspace Gradient project:
+
+1. Once you have signed into your account on the Paperspace website:
+2. Click on "Projects" in the sidebar menu.
+3. Click on the "New Project" button.
+4. Enter a name for your project and select the desired options.
+5. Click on the "Create Project" button.
+6. Once the project is created, you can access it from the Projects page.
+
+Create a Notebook:
+
+1. Select the project where you want to create the notebook.
+2. Click on the "Notebooks" tab.
+3. Click on the "New Notebook" button.
+4. On the "Launch a notebook" step, select "Start from Scratch" as your notebook type.
+
+![Alt text](resources/start-from-scratch.png)
+
+5. Select a machine, the P5000 image is recommended
+
+![Alt text](resources/select-a-machine.png)
+
+6. If you plan on running the whole experiment or the Transformer portion, the project will run for longer than 24 hours, set the timeout to 1 Week, alternatively 1 day would be sufficient.
+
+![Alt text](resources/set-timeout.png)
+
+7. Click on the "View advanced options" button.
+8. Set the Workspace settings:
+    - Wporkspace: https://github.com/jrgrant-uliv/capstone-project-csck700.git
+    - Ref: main
+    - Username: blank
+    - Password: blank
+
+![Alt text](resources/workspace-settings.png)
+
+9. Set the Container settings:
+    - Name: ghcr.io/jrgrant-uliv/tensorflow-cuda-conda:v1
+    - Registry Username: blank
+    - Registry Password: blank
+
+![Alt text](resources/container-settings.png)
+
+10. Click on the "Start Notebook" button.
+
 
 ### 3. Google Colab
 
-Instructions for setting up the project on Google Colab.
+
+#### Open the notebook on Colab
+
+To open the notebook on Google Colab, follow these steps:
+
+1. Go to the [Google Colab website](https://colab.research.google.com/).
+2. Click on "File" in the menu bar.
+3. Select "Open notebook" from the dropdown menu.
+4. In the "GitHub" tab, enter the URL of the notebook file.
+5. Click on the "Search" button.
+6. Select the notebook file from the search results.
+7. The notebook will open in Google Colab.
+
+
+#### Run the "Colab Setup" cell in the notebook
+
+To run the "Colab Setup" cell in the notebook, follow these steps:
+
+1. Open the notebook in Google Colab.
+2. Scroll to the "Colab Setup" cell.
+3. Click on the play button next to the cell.
+4. The cell will run and set up the necessary dependencies and configurations for the notebook.
+
+
 
