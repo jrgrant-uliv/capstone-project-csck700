@@ -255,12 +255,17 @@ class TransformerClassifier(Classifier):
             print ("===========================================================================")
             print (f"Model {self.model_name} - Training")
             print ("===========================================================================")
-            model.fit(train_dataset, epochs=num_epochs, verbose=1, class_weight=class_weights)
+            history = model.fit(train_dataset, epochs=num_epochs, verbose=1, class_weight=class_weights)
+            
+            self.save_training_plots(self.model_name, history, cv_count)
 
                 # Evaluate the model on the test set
             test_predictions = model.predict(test_dataset)
             test_predictions = (test_predictions > prediction_threshold).astype(int)
 
+            self.save_training_info(cv_count, class_weights, train_dataset[0], test_dataset[0], train_dataset[2], test_dataset[2])
+            
+            self.save_classification_report(self.model_name, train_labels[test_index], test_predictions, cv_count)
             # Calculate metrics
             acc = accuracy_score(train_labels[test_index], test_predictions)
             prec = precision_score(train_labels[test_index], test_predictions)

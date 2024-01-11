@@ -14,7 +14,7 @@ from plotly.subplots import make_subplots
 from scikeras.wrappers import KerasClassifier
 from sklearn.metrics import (accuracy_score, auc, confusion_matrix, f1_score,
                              precision_score, recall_score, roc_auc_score,
-                             roc_curve)
+                             roc_curve, classification_report)
 from sklearn.model_selection import StratifiedKFold
 
 
@@ -167,7 +167,7 @@ class Classifier(ABC):
         to_file = os.path.join(self.model_artefact_dir, to_file)
         plot_model(self.model, to_file, show_shapes=True)
 
-    def save_training_plots(self, model_name, history):
+    def save_training_plots(self, model_name, history, cv_count=0):
         """
         Save the training history plots.
 
@@ -176,6 +176,8 @@ class Classifier(ABC):
             history (keras.callbacks.History): The training history object.
         """
         plot_file_name = 'training_history.png'
+        if cv_count > 0:
+            plot_file_name = f'training_history_{cv_count}.png'
         plot_file = os.path.join(self.model_artefact_dir, plot_file_name)
 
         # Create figure with secondary y-axis
@@ -317,12 +319,20 @@ class Classifier(ABC):
             print("Cross Validation Iteration: ", cv_count)
             X_train, X_test = train_data[train_index], train_data[test_index]
             y_train, y_test = train_labels[train_index], train_labels[test_index]
-            model.fit(X_train, y_train, epochs=num_epochs, class_weight=class_weights,
+            history = model.fit(X_train, y_train, epochs=num_epochs, class_weight=class_weights,
                       batch_size=32, verbose=1)
-
+            
+            
             y_pred = model.predict(X_test)
             y_pred = (y_pred > prediction_threshold).astype(int)
-
+            
+            self.save_training_plots(self.model_name, history, cv_count)
+            
+            #save training data information
+            self.save_training_info(cv_count, class_weights, X_train, X_test, y_train, y_test)
+        
+            self.save_classification_report(cv_count, y_test, y_pred)
+            
             acc = accuracy_score(y_test, y_pred)
             prec = precision_score(y_test, y_pred)
             rec = recall_score(y_test, y_pred)
@@ -339,3 +349,22 @@ class Classifier(ABC):
             conf_matrices.append(cm)
             roc_curves.append(roc)
         return accuracies, precisions, recalls, fscores, aucs, conf_matrices, roc_curves
+
+    def save_training_info(self, cv_count, class_weights, X_train, X_test, y_train, y_test):
+        training_data_file = os.path.join(self.model_artefact_dir, f'training_data_{cv_count}.txt')
+        with open(training_data_file, 'w') as fh:
+                # Pass the file handle in as a lambda function to make it callable
+            fh.write('Training Data: \n')
+            fh.write('X_train: ' + str(X_train.shape) + '\n')
+            fh.write('y_train: ' + str(y_train.shape) + '\n')
+            fh.write('X_test: ' + str(X_test.shape) + '\n')
+            fh.write('y_test: ' + str(y_test.shape) + '\n')
+            fh.writelines('Class Weights: ' + str(class_weights) + '\n')
+
+    def save_classification_report(self, cv_count, y_test, y_pred):
+        class_rep = classification_report(y_test, y_pred)
+            
+        class_rep_file = os.path.join(self.model_artefact_dir, f'classification_report_{cv_count}.txt')
+        with open(class_rep_file, 'w') as fh:
+            class_rep.summary(
+                    line_length=120, print_fn=lambda x: fh.write(x + '\n'))
