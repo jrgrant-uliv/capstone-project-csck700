@@ -1,6 +1,6 @@
 # IT Artefact for CSCK700 - James Grant
 
-**Notice:** Status: Submitted. This project was submitted to the University of Liverpool on the 12th of January 2024 and is now in archive mode.
+**Notice:** Status - Submitted. This project was submitted to the University of Liverpool on the 12th of January 2024 and is now in archive mode.
 
 This project is structured to run in a Docker container (ghcr.io/jrgrant-uliv/tensorflow-cuda-conda) for maximum portability. This container is pre-configured with Tensorflow, NVidia Cuda, and Miniconda and can be used on local cuda-capable hardware or cloud-based services like [Paperspace Gradient](https://www.paperspace.com/). If [Google Colab](https://colab.research.google.com/) is preferred, some Colab-specific code has been included to make it a seamless experience.
 
